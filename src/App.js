@@ -24,11 +24,13 @@ class App extends Component {
   }
 
   createMessage() {
-    axios.post('/api/messages' {
-      username: this.
-      messages: this.
-    })
-  }
+    axios.post('/api/messages', {
+      username: this.state.username,
+      messages: this.state.message
+    }).then(res => {
+      this.setState({ allMessages: res.data })
+    });
+  };
 
   saveUsername() {
     if (this.state.username) {
