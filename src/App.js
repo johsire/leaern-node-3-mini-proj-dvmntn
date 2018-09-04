@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import HistoryModal from './components/HistoryModal';
 import './App.css';
 
+import axios from 'axios';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -13,6 +15,19 @@ class App extends Component {
       showHistory: false
     };
     this.closeHistoryModal = this.closeHistoryModal.bind(this);
+  }
+
+  componentDidMount() {
+    axios.get('/api/messages').then(res => {
+      this.setState({ allMessages: res.data })
+    })
+  }
+
+  createMessage() {
+    axios.post('/api/messages' {
+      username: this.
+      messages: this.
+    })
   }
 
   saveUsername() {
